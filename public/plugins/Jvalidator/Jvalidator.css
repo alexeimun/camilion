@@ -1,0 +1,98 @@
+#spin {
+    display: none;
+}
+
+.error::after {
+    content: '* Este campo es obligatorio';
+}
+
+.has-error input {
+    background-color: #FEEBEF;
+    border: 1px solid crimson !important;
+}
+
+.has-error input:focus {
+    border: 1px solid crimson !important;
+}
+
+.error_correo::after {
+    content: '( ! ) El correo es inválido';
+}
+
+.error_clave::after {
+    content: '( ! ) La contraseña no coinside';
+}
+
+.error_telefono::after {
+    content: '( ! ) El número telefónico es inválido';
+}
+
+.error_correo_existe::after {
+    content: '( ! ) El correo ya existe';
+}
+
+.error_documento::after {
+    content: '( ! ) El documento ya existe';
+}
+.error_documento_longitud::after {
+    content: '( ! ) El documento es inválido';
+}
+
+.error, .error_correo, .error_documento, .error_correo_existe,.error_telefono,.error_documento_longitud,.error_clave {
+    color: crimson;
+}
+
+.Wait {
+    opacity: .7;
+    background: #000000;
+    overflow: hidden;
+}
+
+.dinero {
+    color: #149311;
+}
+
+.dinero:focus {
+    color: #149311 !important;
+    border: 1px solid #149311 !important;
+}
+
+.documento:focus {
+    color: #e94a1a !important;
+    border: 1px solid rgba(255, 81, 28, 0.65) !important;
+}
+
+.clave:focus {
+    color: #2535a5 !important;
+    border: 1px solid #8094ff !important;
+}
+
+.correo:focus {
+    color: #484a80;
+    border: 1px solid #484a90 !important;
+}
+
+.numero:focus {
+    color: #1090a4;
+}
+
+.porcentaje {
+    text-align: center;
+}
+
+.porcentaje:focus {
+    color: #9c47ce !important;
+    font-weight: bold;
+    border: 1px solid #bf71f8 !important;
+}
+
+.fecha:focus, .fa-calendar {
+    color: #942a89 !important;
+    border: 1px solid #b834ab !important;
+}
+.telefono:focus {
+    color: #2f668d !important;
+    border: 1px solid #0133ed !important;
+}
+.obligatorio {}
+.correo_unico {}

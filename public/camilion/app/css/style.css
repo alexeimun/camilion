@@ -1,0 +1,17 @@
+body
+{
+    background: #f0ebf1;
+    padding-top: 50px;
+}
+
+input, select, label
+{
+    font-size: 12pt !important;
+    color: #077847 !important;
+}
+
+.starter-template
+{
+    padding: 40px 15px;
+    text-align: center;
+}

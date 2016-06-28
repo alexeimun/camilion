@@ -1,0 +1,139 @@
+<form class="form-horizontal col-lg-12" style="margin-left: -5%" >
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Table:</label>
+        <div class="col-lg-10">
+            <!--<input type="text" ng-model="model ">-->
+            <select class="form-control" ng-model="vm.data.TABLE_NAME" ng-change="vm.changeSingular()">
+                <option ng-repeat="table in vm.tables" ng-value="table">{{table}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-push-2 col-lg-10">
+            <div class="box box-success ">
+                <div class="box-header with-border">
+                    <h3 class="box-title text-green"><span
+                            class="badge label-danger">{{vm.fields[vm.data.TABLE_NAME].length}}</span>
+                        Field
+                        inputs</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse">
+                        </button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Behaviour</th>
+                                <th>Type</th>
+                                <th>Table link</th>
+                                <th>Value</th>
+                                <th>Text</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="field in vm.fields[vm.data.TABLE_NAME]">
+                                <td><a href="">{{field.Field}}</a></td>
+                                <td>{{ field.Type}}</td>
+                                <td>
+                                    <select class="form-control" ng-model="field.typeselect"
+                                            ng-change="vm.clearData(field)">
+                                        <option value="Text" ng-selected="vm.tasteType(field.Type) == 'Text'">
+                                            Text
+                                        </option>
+                                        <option value="Select">Select</option>
+                                        <option value="Textarea"
+                                                ng-selected="vm.tasteType(field.Type) == 'Textarea'">
+                                            Textarea
+                                        </option>
+                                        <option value="Email">Email</option>
+                                        <option value="Password">Password</option>
+                                        <option value="Phone">Phone</option>
+                                        <option value="Phone">Number</option>
+                                        <option value="Price" ng-selected="vm.tasteType(field.Type) == 'Price'">
+                                            Price
+                                        </option>
+                                        <option value="Date" ng-selected="vm.tasteType(field.Type) == 'Date'">
+                                            Date
+                                        </option>
+                                        <option value="Skip" ng-selected="vm.tasteType(field.Type) === 'Skip'">Skip
+                                        </option>
+                                    </select>
+                                </td>
+                                <!--behaviour of select-->
+                                <td ng-if="field.typeselect  === 'Select'" ng-init="field.actionSelect='simple'">
+                                    <select class="form-control" ng-model="field.actionSelect">
+                                        <option value="simple">Simple</option>
+                                        <option value="inner">Inner</option>
+                                    </select>
+                                </td>
+                                <!--Table link-->
+                                <td ng-if="field.typeselect  === 'Select'">
+                                    <select class="form-control" ng-model="field.linkTable">
+                                        <option ng-repeat="table in vm.tables" ng-value="table">{{table}}</option>
+                                    </select>
+                                </td>
+                                <!--table fields value-->
+                                <td ng-if="field.typeselect  === 'Select'">
+                                    <select class="form-control" ng-model="field.valueSelect">
+                                        <option ng-repeat="val in vm.fields[field.linkTable]" ng-value="val.Field">
+                                            {{val.Field}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <!--table fields text-->
+                                <td ng-if="field.typeselect  === 'Select'">
+                                    <select class="form-control" ng-model="field.textSelect">
+                                        <option ng-repeat="val in vm.fields[field.linkTable]" ng-value="val.Field">
+                                            {{val.Field}}
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+    <!--{{vm.fields[vm.data.TABLE_NAME][0]| json}}-->
+    <div class='form-group'>
+        <label class='col-lg-2 control-label'>Prefix:</label>
+        <div class='col-lg-10'>
+            <input type="text" class="form-control obligatorio" ng-model="vm.data.PREFIX"
+                   placeholder="Table prefix" value="t_">
+        </div>
+    </div>
+    <div class='form-group'>
+        <label class='col-lg-2 control-label'>Singular:</label>
+        <div class='col-lg-10'>
+            <input type="text" class="form-control obligatorio" ng-model="vm.data.SINGULAR"
+                   placeholder="Singular table name">
+        </div>
+    </div>
+
+    <div class='form-group'>
+        <label class='col-lg-2 control-label'>Layout:</label>
+        <div class='col-lg-10'>
+            <input type="text" class="form-control obligatorio" ng-model="vm.data.LAYOUT"
+                   placeholder="Layout name">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+        <div class="col-lg-offset-5 col-lg-10">
+            <button type="button" class="btn btn-success btn-lg" ng-click="vm.sendForm()"><span
+                    class="glyphicon glyphicon-send"></span>&nbsp; Generate
+            </button>
+        </div>
+    </div>
+</form>
