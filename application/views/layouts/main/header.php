@@ -12,7 +12,7 @@
 </head>
 
 
-<body class="skin-green-light sidebar-mini">
+<body class="skin-black sidebar-mini">
 <div class="wrapper">
 
     <header class="main-header">
@@ -21,7 +21,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><i class="ion ion-android-home"></i></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><span class="ion-leaf"></span> <b>Camilion</b> <span style="font-size: 8pt;">live green!</span></span>
+            <span class="logo-lg"></span> <b>Camilion</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -34,13 +34,13 @@
                 <ul class="nav navbar-nav">
 
                     <!-- Full screen -->
-                    <li class="dropdown fullscreen">
-                        <a href="#" onclick="BigScreen.toggle()" class="dropdown-toggle" id="screen"
-                           data-toggle="dropdown"
-                           data-toggle="tooltip" title="Pantalla completa">
-                            <i class="ion ion-monitor"></i>
-                        </a>
-                    </li>
+                    <!--<li class="dropdown fullscreen">-->
+                    <!--    <a href="#" onclick="BigScreen.toggle()" class="dropdown-toggle" id="screen"-->
+                    <!--       data-toggle="dropdown"-->
+                    <!--       data-toggle="tooltip" title="Pantalla completa">-->
+                    <!--        <i class="ion ion-monitor"></i>-->
+                    <!--    </a>-->
+                    <!--</li>-->
 
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
@@ -57,7 +57,7 @@
                                         src=""
                                         class="img-circle" alt="User Image"/>
                                     <p>
-                                        xxx</small>
+                                        <small>xxx</small>
                                     </p>
                                 </li>
                             <!-- Menu Footer-->
@@ -72,7 +72,6 @@
                             </li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </nav>

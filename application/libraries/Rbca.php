@@ -1,5 +1,9 @@
 <?php
 
+    /**
+     * Class Rbca
+     * Role Base on Control Access
+     */
     class Rbca
     {
         private $CI;

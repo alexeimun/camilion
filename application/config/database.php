@@ -78,7 +78,7 @@
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'sdce',
+		'database' => 'camilion',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => false,
