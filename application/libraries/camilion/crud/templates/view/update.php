@@ -1,6 +1,10 @@
 <?php
+    /**
+     * @var Cgenerator $gen
+     */
     $table_name = strtolower($_POST['TABLE']);
     $table_name_singular = strtolower($_POST['SINGULAR']);
+    $primary_key = $gen->ShowPrimaryKey($table);
 ?>
 <?= "<?php\n" ?>
 /**
@@ -15,7 +19,7 @@ $this->Header(['assets' => ['jvalidator', 'dialogs', 'spin']], '<?= $_POST['LAYO
 </section>
 <!-- Main content -->
 <div class="container">
-    <?= "<?=form_open('', ['class' => 'form-horizontal col-md-8', 'style' => 'margin-left: 15%']) ?>\n" ?>
+    <?= "<?=form_open('', ['class' => 'form-horizontal col-md-8', 'style' => 'margin-left: 15%'], ['$primary_key' => " .'$info->'.$primary_key."]) ?>\n" ?>
     <hr style="border: 1px solid #3D8EBC;"/>
     <?= '<?= $this->view("' . ucfirst($table_name) . '/Form' . ucfirst($table_name_singular) . '", ["view" => "update", "info" => $info], true) ?>' . "\n" ?>
 <?= '<?=  form_close() ?>' . "\n" ?>

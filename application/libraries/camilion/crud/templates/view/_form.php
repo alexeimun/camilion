@@ -35,7 +35,7 @@
     }
 
 <?php foreach ($Fields as $field) : ?>
-    <?php if($field['typeselect'] != 'Skip'): ?>
+    <?php if(!in_array($field['typeselect'], ['Skip'])): ?>
     <?php $model = '$this->' . $table_name . '_model' ?>
     <?php if($field['typeselect'] == 'Select'): ?>
         <?php $provider = '$this->' .  $table_name . '_model->Trae' . ucfirst(substr($field['linkTable'], strlen($prfix), strlen($field['linkTable']) - strlen($prfix))) . 'DD()' ?>

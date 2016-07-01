@@ -1,14 +1,23 @@
 ///<reference path="../app.ts"/>
 
 module Camilion {
+
+    export interface IData {
+        TABLE_NAME: string;
+        LAYOUT: string;
+        PREFIX: string;
+        SINGULAR: string;
+        FIELDS: Table[];
+        TABLE: string;
+    }
     export class MainController {
 
-        public data = {
+        public data: IData = {
             TABLE_NAME : '',
             LAYOUT : 'main',
             PREFIX : 't_',
             SINGULAR : '',
-            FIELDS : '',
+            FIELDS : [],
             TABLE : ''
         };
         public fields: Table[];
@@ -21,13 +30,6 @@ module Camilion {
         constructor(private tableService: TableService)
         {
             //Definition block
-            tableService.getallTableFields().then((tables: Table[]) =>
-            {
-                this.fields = tables;
-            }).catch(reason =>
-            {
-                console.log("something went wrong!", reason);
-            });
 
             tableService.getTables().then((resp: string[]) =>
             {
@@ -39,6 +41,20 @@ module Camilion {
             {
                 console.log("something went wrong!", reason);
             });
+
+            tableService.getallTableFields().then((tables: Table[]) =>
+            {
+                tables[this.data.TABLE_NAME] = tables[this.data.TABLE_NAME].map((item)=>
+                {
+                    item.typeselect = this.tasteType(item.Type);
+                    return item;
+                });
+                this.fields = tables;
+            }).catch(reason =>
+            {
+                console.log("something went wrong!", reason);
+            });
+
         }
 
         changeSingular(): void
@@ -56,13 +72,7 @@ module Camilion {
         sendForm(): void
         {
             this.data.TABLE = this.data.TABLE_NAME.substring(this.data.PREFIX.length);
-            this.data.FIELDS = this.fields[this.data.TABLE_NAME].map((obj: any)=>
-            {
-                if(!obj.hasOwnProperty('typeselect')) {
-                    obj.typeselect = this.tasteType(obj.Type)
-                }
-                return obj;
-            });
+            this.data.FIELDS = this.fields[this.data.TABLE_NAME];
 
             this.tableService.sendForm(this.data).then((response: string)=>
             {

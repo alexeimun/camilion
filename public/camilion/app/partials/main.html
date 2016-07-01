@@ -1,3 +1,5 @@
+{{ vm.fields[vm.data.TABLE_NAME] | json }}
+
 <form class="form-horizontal col-lg-12" style="margin-left: -5%" >
     <div class="form-group">
         <label class="col-lg-2 control-label">Table:</label>
@@ -54,13 +56,13 @@
                                         <option value="Password">Password</option>
                                         <option value="Phone">Phone</option>
                                         <option value="Phone">Number</option>
-                                        <option value="Price" ng-selected="vm.tasteType(field.Type) == 'Price'">
+                                        <option value="Price">
                                             Price
                                         </option>
-                                        <option value="Date" ng-selected="vm.tasteType(field.Type) == 'Date'">
+                                        <option value="Date">
                                             Date
                                         </option>
-                                        <option value="Skip" ng-selected="vm.tasteType(field.Type) === 'Skip'">Skip
+                                        <option value="Skip">Skip
                                         </option>
                                     </select>
                                 </td>

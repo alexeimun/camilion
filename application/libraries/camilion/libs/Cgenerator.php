@@ -1,5 +1,7 @@
 <?php
-
+    /**
+     * @property  CI_DB_query_builder $CI
+     */
     class Cgenerator
     {
         public $CI;
@@ -9,7 +11,7 @@
             $this->CI =& get_instance();
         }
 
-        public function Show($table)
+        public function ShowPrimaryKey($table)
         {
             $show = $this->CI->db->query("SHOW  KEYS  FROM " . $table);
             return $show->num_rows() ? $show->result()[0]->Column_name : false;

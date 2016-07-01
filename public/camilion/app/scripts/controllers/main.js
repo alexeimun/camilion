@@ -3,6 +3,7 @@ var Camilion;
 (function (Camilion) {
     var MainController = (function () {
         function MainController(tableService) {
+            //Definition block
             var _this = this;
             this.tableService = tableService;
             this.data = {
@@ -10,19 +11,22 @@ var Camilion;
                 LAYOUT: 'main',
                 PREFIX: 't_',
                 SINGULAR: '',
-                FIELDS: '',
+                FIELDS: [],
                 TABLE: ''
             };
-            //Definition block
-            tableService.getallTableFields().then(function (tables) {
-                _this.fields = tables;
-            }).catch(function (reason) {
-                console.log("something went wrong!", reason);
-            });
             tableService.getTables().then(function (resp) {
                 _this.tables = resp;
                 _this.data.TABLE_NAME = resp[0];
                 _this.changeSingular();
+            }).catch(function (reason) {
+                console.log("something went wrong!", reason);
+            });
+            tableService.getallTableFields().then(function (tables) {
+                tables[_this.data.TABLE_NAME] = tables[_this.data.TABLE_NAME].map(function (item) {
+                    item.typeselect = _this.tasteType(item.Type);
+                    return item;
+                });
+                _this.fields = tables;
             }).catch(function (reason) {
                 console.log("something went wrong!", reason);
             });
@@ -36,14 +40,8 @@ var Camilion;
             delete field['valueSelect'];
         };
         MainController.prototype.sendForm = function () {
-            var _this = this;
             this.data.TABLE = this.data.TABLE_NAME.substring(this.data.PREFIX.length);
-            this.data.FIELDS = this.fields[this.data.TABLE_NAME].map(function (obj) {
-                if (!obj.hasOwnProperty('typeselect')) {
-                    obj.typeselect = _this.tasteType(obj.Type);
-                }
-                return obj;
-            });
+            this.data.FIELDS = this.fields[this.data.TABLE_NAME];
             this.tableService.sendForm(this.data).then(function (response) {
                 // success function
             }, function (response) {

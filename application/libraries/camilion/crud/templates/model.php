@@ -4,7 +4,7 @@
     $singular = strtolower($_POST['SINGULAR']);
     $table = $prfix . $table_name;
 
-    $primary_key = $gen->Show($table);
+    $primary_key = $gen->ShowPrimaryKey($table);
     $Fields = $_POST['FIELDS'];
     $field_names = array_map(function ($field)
     {
@@ -28,7 +28,7 @@
                     $f = '';
                     foreach ($Fields as $field)
                     {
-                        if($field['typeselect'] != 'Skip')
+                        if(!in_array($field['typeselect'], ['Skip']))
                         {
                         if($field['typeselect'] == 'Select')
                             $placeholder = '--- Selecione ' . substr($field['linkTable'], strlen($prfix), strlen($field['linkTable'])-strlen($prfix)) . ' ---';
@@ -109,7 +109,7 @@
             }
 
     <?php elseif($field['actionSelect'] == 'inner'): ?>
-            
+
         public function Trae<?= ucfirst(substr($field['linkTable'], strlen($prfix), strlen($field['linkTable'])-strlen($prfix))) ?>DD()
         {
             return $this->db->query("SELECT

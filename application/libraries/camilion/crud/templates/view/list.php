@@ -1,4 +1,7 @@
 <?php
+    /**
+     * @var Cgenerator $gen
+     */
     $prfix = strtolower($_POST['PREFIX']);
     $table_name = strtolower($_POST['TABLE']);
     $table_name_singular = strtolower($_POST['SINGULAR']);
@@ -6,7 +9,7 @@
     $model = $table_name . "_model";
     $method = "Trae" . ucfirst(ucfirst($table_name));
 
-    $primary_key = $gen->Show($table);
+    $primary_key = $gen->ShowPrimaryKey($table);
     $Fields = $_POST['FIELDS'];
 
     $fields = '';
