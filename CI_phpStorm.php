@@ -84,7 +84,7 @@
     }
 
     /**
-     * @property CI_DB_driver $db              This is the platform-independent base Active Record implementation class.
+     * @property CI_DB_query_builder $db              This is the platform-independent base Active Record implementation class.
      * @property CI_DB_forge $dbforge                 Database Utility Class
      * @property CI_Benchmark $benchmark              This class enables you to mark points and calculate the time difference between them.<br />  Memory consumption can also be displayed.
      * @property CI_Calendar $calendar                This class enables the creation of calendars
