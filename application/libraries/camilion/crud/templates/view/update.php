@@ -3,6 +3,7 @@
      * @var Cgenerator $gen
      */
     $table_name = strtolower($_POST['TABLE']);
+    $table = $_POST['PREFIX'] . $table_name;
     $table_name_singular = strtolower($_POST['SINGULAR']);
     $primary_key = $gen->ShowPrimaryKey($table);
 ?>

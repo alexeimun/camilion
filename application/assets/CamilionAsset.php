@@ -9,12 +9,15 @@
         #Js files
         'css' => [
             'camilion/app/css/style.css',
+            'angular-ui-tree/dist/angular-ui-tree.min.css',
         ],
         'js' => [
             //---------Library load--------------
-            'camilion/app/scripts/libs/angular.min.js',
+            //'camilion/app/scripts/libs/angular.min.js',
+            'angular/angular.min.js',
             //----------Modules-----------------
             'camilion/app/scripts/libs/angular-route.min.js',
+            'angular-ui-tree/dist/angular-ui-tree.min.js',
             //----------Services----------------
             'camilion/app/scripts/services/TableService.js',
             //----------Controllers--------------
@@ -22,5 +25,6 @@
             'camilion/app/scripts/controllers/navigation.js',
             //-------------------App--------------
             'camilion/app/scripts/app.js',
+            //-----------------Plugins-------------
         ],
     ];

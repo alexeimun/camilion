@@ -8,17 +8,16 @@
     return [
         #Css styles
         'css' => [
-            'bootstrap/css/bootstrap.min.css',
+            'bootstrap/dist/css/bootstrap.min.css',
             'font-awesome/css/font-awesome.min.css',
             'AdminLTE/css/AdminLTE.min.css',
             'AdminLTE/css/skins/_all-skins.min.css',
             'css/styler.css',
-            'css/ionicons/css/ionicons.min.css',
         ],
         #Js files
         'js' => [
-            'js/jquery.min.js',
-            'bootstrap/js/bootstrap.min.js',
+            'jquery/dist/jquery.min.js',
+            'bootstrap/dist/js/bootstrap.min.js',
             'AdminLTE/js/app.min.js',
             'AdminLTE/js/demo.js',
         ],

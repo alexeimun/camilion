@@ -8,12 +8,12 @@
     return [
         #Css styles
         'css' => [
-            'plugins/datatables/dataTables.bootstrap.css',
+            'datatables.net-bs/css/dataTables.bootstrap.min.css',
 
         ],
         #Js files
         'js' => [
-            'plugins/datatables/jquery.dataTables.js',
-            'plugins/datatables/dataTables.bootstrap.js',
+            'datatables.net/js/jquery.dataTables.min.js',
+            'datatables.net-bs/js/dataTables.bootstrap.min.js',
         ],
     ];

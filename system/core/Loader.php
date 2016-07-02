@@ -564,7 +564,19 @@ class CI_Loader {
 					}
 					else
 					{
-						$csss .= "<link rel='stylesheet' type='text/css' href='" . base_url('public/' . $css) . "'/>";
+						foreach (['public', 'bower_components', 'node_modules'] as $item)
+						{
+							if(file_exists(APPPATH . "../$item/$css"))
+							{
+								$csss .= "<link rel='stylesheet' type='text/css' href='" . base_url("$item/$css") . "'/>";
+								$item = true;
+								break;
+							}
+						}
+						if($item !== true)
+						{
+							array_push($errors, ['type' => 'jscss', ['file'] => $css, 'asset' => $asset]);
+						}
 					}
 				}
 				foreach ($_js as $js)
@@ -576,21 +588,42 @@ class CI_Loader {
 					}
 					else
 					{
-						$jss .= '<script type="text/javascript" src="' . base_url('public/' . $js) . '"></script>';
+						//var_dump(file_exists(APPPATH . "../bower_components/datatables.net/js/jquery.dataTables.min.js"));exit;
+						foreach (['public', 'bower_components', 'node_modules'] as $item)
+						{
+							if(file_exists(APPPATH . "../$item/$js"))
+							{
+								$jss .= '<script type="text/javascript" src="' . base_url("$item/$js") . '"></script>';
+								$item = true;
+								break;
+							}
+						}
+						if($item !== true)
+						{
+							array_push($errors, ['type' => 'jscss', 'file' => $js, 'asset' => $asset]);
+						}
 					}
 				}
 			}
 			else
 			{
-				array_push($errors, ucfirst(strtolower($asset)));
+				array_push($errors, ['type' => 'asset', 'file' => ucfirst(strtolower($asset))]);
 			}
 		}
+
 		if(!empty($errors))
 		{
 			echo '<ul style="background: #f4f4f4;padding: 25px;border: 1px solid;margin: 5px">';
 			foreach ($errors as $error)
 			{
-				echo '<li style="color: lightcoral">the asset file name <b>' . $error . 'Asset.php</b> does not exist in application/assets...</li>';
+				if($error['type'] == 'asset')
+				{
+					echo '<li style="color: lightcoral">The asset file name <b>' . $error['file'] . 'Asset.php</b> does not exist in application/assets...</li>';
+				}
+				else if($error['type'] == 'jscss')
+				{
+					echo '<li style="color: #f4ae41">The file <b>' . $error['file'] . '</b> inside of ' . ucfirst($error['asset']) . 'Asset.php, does not exist in the known paths.</li>';
+				}
 			}
 			echo '</ul>';
 		}

@@ -12,7 +12,7 @@ module Camilion {
 
         static create(): ng.IModule
         {
-            return angular.module('camilionApp', ['ngRoute']).config(["$routeProvider", (routeProvider: angular.route.IRouteProvider) =>
+            return angular.module('camilionApp', ['ngRoute', 'ui.tree']).config(["$routeProvider", (routeProvider: angular.route.IRouteProvider) =>
             {
                 routeProvider.when('/', {
                     templateUrl : 'public/camilion/app/partials/main.html',
@@ -21,7 +21,6 @@ module Camilion {
                 }).when('/navigation', {
                     templateUrl : 'public/camilion/app/partials/nav.html',
                     controller : 'NavController',
-                    controllerAs : 'nav'
                 }).otherwise({
                     redirectTo : '/'
                 });
@@ -32,7 +31,8 @@ module Camilion {
             //Services
                 .service('TableService', TableService)
                 //Controllers
-                .controller('MainController', MainController).controller('NavController', NavController)
+                .controller('MainController', MainController)
+                .controller('NavController', NavController)
         }
     }
     export function init()

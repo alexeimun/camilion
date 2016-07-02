@@ -32,7 +32,7 @@
             ##View
             $this->createFile($viewfolder . "/Ver" . ucfirst($singular) . ".php", 'view/view');
             ##CI_phpStorm
-            //$this->createFile(APPPATH . "/CI_phpStorm.php", 'CI_phpStorm');
+            $this->createFile(APPPATH."../CI_phpStorm.php", 'CI_phpStorm');
         }
 
         private function createFile($filename, $template)

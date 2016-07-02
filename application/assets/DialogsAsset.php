@@ -8,10 +8,10 @@
     return [
         #Css styles
         'css' => [
-            'bootstrap/dialogs/bootstrap-dialog.min.css',
+            'bootstrap3-dialog/dist/css/bootstrap-dialog.min.css',
         ],
         #Js files
         'js' => [
-            'bootstrap/dialogs/bootstrap-dialog.min.js',
+            'bootstrap3-dialog/dist/js/bootstrap-dialog.min.js',
         ],
     ];

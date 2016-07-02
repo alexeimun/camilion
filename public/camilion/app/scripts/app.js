@@ -9,15 +9,14 @@ var Camilion;
         function app() {
         }
         app.create = function () {
-            return angular.module('camilionApp', ['ngRoute']).config(["$routeProvider", function (routeProvider) {
+            return angular.module('camilionApp', ['ngRoute', 'ui.tree']).config(["$routeProvider", function (routeProvider) {
                     routeProvider.when('/', {
                         templateUrl: 'public/camilion/app/partials/main.html',
                         controller: 'MainController',
                         controllerAs: 'vm'
                     }).when('/navigation', {
                         templateUrl: 'public/camilion/app/partials/nav.html',
-                        controller: 'NavController',
-                        controllerAs: 'nav'
+                        controller: 'NavController'
                     }).otherwise({
                         redirectTo: '/'
                     });
@@ -25,7 +24,8 @@ var Camilion;
                 $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
             })
                 .service('TableService', Camilion.TableService)
-                .controller('MainController', Camilion.MainController).controller('NavController', Camilion.NavController);
+                .controller('MainController', Camilion.MainController)
+                .controller('NavController', Camilion.NavController);
         };
         return app;
     }());
