@@ -8,6 +8,6 @@
     return [
         #Js files
         'js' => [
-            'spinjs/spin.min.js',
+            'spin.js/spin.min.js',
         ],
     ];
