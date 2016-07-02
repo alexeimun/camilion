@@ -8,10 +8,10 @@
     return [
         #Css styles
         'css' => [
-            'plugins/uploadify/uploadify.css',
+            'uploadify/uploadify.css',
         ],
         #Js files
         'js' => [
-            'plugins/uploadify/jquery.uploadify.min.js',
+            'uploadify/jquery.uploadify.min.js',
         ],
     ];
