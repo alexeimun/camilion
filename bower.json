@@ -1,0 +1,35 @@
+{
+  "name": "camilion",
+  "homepage": "https://github.com/alexeimun/camilion",
+  "authors": [
+    "alexeimun <fact1128@hotmail.com>"
+  ],
+  "description": "Code generator",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-route": "^1.5",
+    "angular-ui-tree": "^2.16.0",
+    "jquery": "2.2.4",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
+    "bootstrap3-dialog": "^1.35.2"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    }
+  }
+}
